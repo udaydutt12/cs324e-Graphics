@@ -30,17 +30,18 @@ void draw()
           }
         else
           {
-            line(xpos,ypos,xpos+1000.0/book.length,ypos-instances_inline*7.0/83.0);
+            line(xpos,ypos,xpos+1000.0/book.length,ypos-instances_inline*7.0/90.0);
             xpos+=1000.0/book.length;
-            ypos-=instances_inline*7.0/83.0;
+            ypos-=instances_inline*7.0/90.0;
           }
       }
     }
-    globalcount+=3;//change this as you wish
+    globalcount+=5;//change this as you wish
 }
 
 int ScanForWord(String word,String line)
 {
+  line=line.toLowerCase();
   int instances=0;
   int index=line.indexOf(word);
   while (index!=-1)
@@ -62,9 +63,12 @@ void createAxis()
 {
   fill(0);
   stroke(0);
-  strokeWeight(5);
+  strokeWeight(3);
   text("X-Axis = Length of Book", 40, 60);
   text("Y-Axis = Frequency",850,100);
+  text("*Each line represents a different word.",32,230);
+  text("This graph tracks how the usage frequency",32, 250);
+  text("of each word changes through the course of the book.",32,270);
   line(0,5,1000,5);
   line(995,0,995,700);
   line(0,5,0,15);
@@ -81,19 +85,18 @@ void createAxis()
   text("0",970,695);
   line(995,695-77-7.0/9.0,985,695-77-7.0/9.0);
   text("1000",950,695-77-7.0/9.0);
-  line(995,695-2.0*(77-7.0/9.0),985,695-2.0*(77-7.0/9.0));
-  text("2000",950,695-2.0*(77-7.0/9.0));
-  line(995,695-3.0*(77-7.0/9.0),985,695-3.0*(77-7.0/9.0));
-  text("3000",950,695-3.0*(77-7.0/9.0));
+  line(995,695-2.0*(77+7.0/9.0),985,695-2.0*(77+7.0/9.0));
+  text("2000",950,695-2.0*(77+7.0/9.0));
+  line(995,695-3.0*(77+7.0/9.0),985,695-3.0*(77+7.0/9.0));
+  text("3000",950,695-3.0*(77+7.0/9.0));
   line(995,695-4.0*(77+7.0/9.0),985,695-4.0*(77+7.0/9.0));
-  text("4000",950,695-4.0*(77-7.0/9.0));
+  text("4000",950,695-4.0*(77+7.0/9.0));
   line(995,695-5.0*(77+7.0/9.0),985,695-5.0*(77+7.0/9.0));
   text("5000",950,695-5.0*(77+7.0/9.0));
-  line(995,695-6.0*(77-7.0/9.0),985,695-6.0*(77-7.0/9.0));
-  text("6000",950,695-6.0*(77-7.0/9.0));
+  line(995,695-6.0*(77+7.0/9.0),985,695-6.0*(77+7.0/9.0));
+  text("6000",950,695-6.0*(77+7.0/9.0));
   line(995,695-7.0*(77+7.0/9.0),985,695-7.0*(77+7.0/9.0));
   text("7000",950,695-7.0*(77-7.0/9.0));
   line(995,695-8.0*(77-7.0/9.0),985,695-8.0*(77-7.0/9.0));
-  text("8000",950,695-8.0*(77-7.0/9.0));
-  
+  text("8000",950,695-8.0*(77-7.0/9.0)); 
 }
