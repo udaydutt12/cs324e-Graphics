@@ -1,10 +1,12 @@
 Top t;
+PImage img;
 Bottom b;
 void setup(){
-  size(900,150);
-  int direction = 1;
-  t = new Top(30, 35, 50, 4, 15, 35);
-  b = new Bottom(30, 35, 50, 4, 15, 35, 10);
+  img = loadImage("sandbeach.jpg");
+  surface.setResizable(true);
+  surface.setSize(900,300);
+  t = new Top(30, 35, 40, 4, 15, 35);
+  b = new Bottom(30, 35, 40, 4, 15, 35, 10);
 }
 int direction = 1;
 class Top{
@@ -26,7 +28,10 @@ class Top{
     line(headX, headY + 10, headX + armLength,headY);
     ellipseMode(RADIUS);
     ellipse(headX, headY - radius, radius,radius);
-
+    arc(headX,headY-15,10,10,.95,PI-.95);
+    strokeWeight(3);
+    point(headX-5, headY - 20);
+    point(headX+5, headY - 20);
  }
  
   void move() {
@@ -68,7 +73,7 @@ class Bottom extends Top
  }
 }
 void draw() {
-  background(255);
+  image(img,0,0);
   t.display();
   t.move();
   b.move();
