@@ -1,0 +1,9 @@
+Our team is trying to tell a story of boys playing on a bridge above the sea with small fish and shark in the sea and birds in the sky. The sequence is approximately 10 seconds.
+We divide the canvas into three parts and each one of us will be responsible for one part. 
+
+Lingyun is responsible for making two birds of different colors in the body part, wings part and the beak part. When the birds are flying in the sky, their wings are moving at the same time. Lingyun creates a class called Bird to allow the objects to move in different speeds and have different colors. A subclass called Wings is also created to enable the moving of the wings and to let the wings to have different colors. When the birds objects reach the edges of the canvas, it will disappear and appear at the beginning of the canvas.
+
+Uday is responsible for . 
+Max is responsible for . 
+Extra credit: Lingyun adds a sound file called "bird.mp3" to make the story to have sound.
+After we finish our part, we put all classes and subclasses into one file.
