@@ -12,7 +12,8 @@ class Wings extends Bird{
   }
   void display(){ 
     fill(c3);   //override the display in the superclass
-    triangle(x-radius*10,y,x+radius*30,y,x-radius*10,y-a*35);
+    stroke(c3);
+    triangle(x-radius*20,y,x+radius*60,y,x-radius*10,y-a*65);
   }
   void flap(){
     a=-a;
