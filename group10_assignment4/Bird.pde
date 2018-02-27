@@ -2,7 +2,6 @@ class Bird {
   float x, y, radius;
   color c1,c2;
   float speed;
- 
   Bird(){}
   Bird(float x, float y, float r,float s, color c1,color c2) {
     this.x=x;

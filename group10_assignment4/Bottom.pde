@@ -1,3 +1,5 @@
+
+float omega = 0;
 class Bottom extends Top
 {
  float hipX, hipY;
