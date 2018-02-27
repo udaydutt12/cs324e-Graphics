@@ -2,7 +2,7 @@ import processing.sound.*;
 SoundFile file;
 String audioName = "bird.mp3";
 String path;
-Bird b1,b3;Wings b2,b4;
+Bird b1,b3; Wings b2,b4;
 PVector p;
 
 Top t;Bottom b;
@@ -18,10 +18,10 @@ void setup(){
   path = sketchPath(audioName);
   file = new SoundFile(this, path);
   file.play();
-  b1 = new Bird(50,50,1,2,color(234,223,135),color(250,145,8));
-  b2 = new Wings(50,50,1,2,color(255,206,70),1);
-  b3 = new Bird(200,150,1.5,1,color(6,64,10),color(234,223,135));
-  b4 = new Wings(200,150,1.5,1,color(34,139,41),1.5);
+  b1 = new Bird(50,50,0.5,2,color(234,223,135),color(250,145,8));
+  b2 = new Wings(50,50,0.5,2,color(255,206,70),0.5);
+  b3 = new Bird(200,125,1,1,color(6,64,10),color(234,223,135));
+  b4 = new Wings(200,125,1,1,color(34,139,41),1);
   t = new Top(30, 245, 40, 4, 15, 35);
   b = new Bottom(30, 245, 40, 4, 15, 35, 10);
   f1=new Fish(true,0,2,color(10,10,240),0);
@@ -39,7 +39,6 @@ void draw(){
   noStroke();
   fill(227,250,255);
   rect(0,0,900,200);
-  //frameRate(5);
   stroke(0);
   b2.display();
   b2.move();
