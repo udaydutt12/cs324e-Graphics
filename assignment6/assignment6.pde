@@ -1,26 +1,20 @@
 Ball ball; //create globals
-//Tank tank;
-//Rope rope;
+Tank tank;
+Rope rope;
 
 void setup()
 {
-  size(500,500);
-  ball=new Ball(200,480,1000,20,0.9,-3); // Instantiate Ball, Tank and ROpe objects
-  //tank=new Tank();
-  //rope=new Rope();
-  frameRate(100);  //We might need frameRate later on
+  size(1200,600);
+  ball=new Ball(); // Instantiate Ball, Tank and Rope objects
+  tank=new Tank();
+  rope=new Rope();
+  frameRate(50);  //We might need frameRate later on
 }
 
 void draw()
 {
-  background(0);
-  ball.display();
-  ball.applyForce();
-  ball.bounce();
-  if (mousePressed){
-    ball.drop();
-  }
-  /*
+  background(255);
+  tank.show();
   if(keyPressed)   
   {
  //   while(keyPressed&&key==CODED)   //this while loop might be unnecessary bc/ of the draw loop
@@ -32,23 +26,19 @@ void draw()
           tank.alterAngle("-");//fill in code to decrease the tanks angle. Make sure to have a catch for 0 degrees
       }
   }
-  if(keyPressed && key==' ')
+  if(keyPressed && key==' ' && rope.isAttached()==false)
   {
      tank.fire();
-     rope.catchBall();
-     rope.swing();
+
   }
-  if(keyPressed && key==' ' && tank.hasFired())
+  if(tank.hasFired()&&rope.isAttached())
+  {
+       rope.swing();
+  }
+  if(keyPressed && key=='r' && tank.hasFired())
   {
     rope.releaseBall();
+
   }
-  if(ypos==0)
-  {
-    ball.bounce();
-  }
-  if(xpos==0||xpos==900)
-  {
-    ball.wallBounce();
-  }
-  */
+
 }

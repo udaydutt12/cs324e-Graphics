@@ -1,63 +1,61 @@
-class Ball {
-  float x,y,r,m,fx,fy,vy,vx,ax,ay,radius;
-  float friction= 0.995;
-  float ks = 0.5;
-  float kd = 0.1;
-  float ypos;
-  Boolean touchrope = false;
-  Boolean drop = false;
-  
-  Ball(){}
-  Ball(float x, float y, float m, float r,float vx, float vy){
-    this.x=x;
-    this.y=y;
-    this.m=m;
-    this.r=r;
-    this.vx=vx;
-    this.vy=vy;
-  }
-  
-  void applyForce(){
-    if (touchrope == false){
-      ax=0;
-      ay=9.8/m;
-      vx += ax;
-      vy += ay;
-      vx *= friction;
-      vy *= friction;
-      x += vx;
-      y += vy;
-      ypos =y;
-    }
-  }
-  
-  void display(){
-    ellipse(x, y, r, r);
-  }
-  
-  void bounce()
+
+class Ball
+{
+  float time=1;
+  float xvel=0;
+  float yvel=0;
+  float ydist=0;
+  Ball()
   {
-    if (x>=300){
-      touchrope =true;
-    }
-    if (touchrope==true && drop ==false){
-      float f = -((ks * (x - 300)) + kd*vx);
-      float a = f/m;
-      y=ypos+(0.5*(vx*vx+vy*vy))/9.8;
-      vx = vx + a;
-      x += vx;
-    }
+    //instantiate the ball object
+  }
+  
+  void bounce(float xvel_in, float yvel_in,float xpos,float ypos)
+  {
     //this will hold how the ball will bounce, and make the
     //ball bounce with damping
+    float new_yvel=-1*yvel_in;
+    yvel_in=new_yvel;
+    
   }
   
-  void drop(){
-    drop=true;
-    touchrope = false;
-  }
-  void wallBounce()
+  void wallBounce(float xvel,float yvel)
   {
     //Make the boundaries walls, so the ball doesnt fly off the screen
     //so we need wallBounce, basically change in momentum to the opposite direction.
+  }
+  
+  void show(float theta)
+  {
+  //pushMatrix();
+  //translate(0,550);
+  //rotate(-1*radians(theta));
+  //ellipse(150,42.5,15,15);
+  //popMatrix();
+    if(time==1)
+  {
+    xvel=25*cos(radians(theta));
+    yvel=40*sin(radians(theta));
+  }
+  float acceleration=-1;
+  ydist+=yvel;
+  float xdist=xvel*(time-1);
+  pushMatrix();
+  translate(xdist,550-ydist);
+  rotate(-1*radians(theta));
+  fill(255);
+  ellipse(150,42.5,15,15);
+  fill(0);
+  ellipse(150,42.5,2,2);
+  ellipse(156.5,42.5,2,2);
+  ellipse(143.5,42.5,2,2);
+  ellipse(150,49,2,2);
+  ellipse(150,36,2,2);
+  fill(255);
+  popMatrix();
+  yvel+=acceleration;
+  time++;
+  if(xdist<560&&xdist>520)
+    rope.catchBall(theta,xdist,ydist);
   }
 }
