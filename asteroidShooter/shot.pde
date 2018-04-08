@@ -3,8 +3,8 @@ class shot extends Shooter{
   float yPos;
   float velX;
   float velY;
-  xPos = upperX;
-  yPos = upperY;
+  float xPos = upperX;
+  float yPos = upperY;
   
   velX = 10*cos(angle);
   velY = 10*sin(angle);
