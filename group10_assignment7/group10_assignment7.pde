@@ -1,4 +1,3 @@
-Shooter S;
 Fire fire;
 PImage[] bullet=new PImage[1];
 PImage[] big_asteroids=new PImage[7];
@@ -12,6 +11,7 @@ ArrayList <Asteroid> asteroids=new ArrayList <Asteroid>(0);
 ArrayList <Fire> fires=new ArrayList <Fire>(0);
 ArrayList <Shooter> shooters=new ArrayList <Shooter>(0);
 Boolean hasfired=false;
+Boolean[] keys=new Boolean[5];
 int count=0;
 
 
@@ -22,6 +22,8 @@ void setup()//sets up variables,display parameters, and loads images
   spritesheets[0]=loadImage("ship.png");
   spritesheets[1]=loadImage("explosion.png");
   bullet[0]=loadImage("bullet1.png");
+  for(int i=0;i<keys.length;i++)
+      keys[i]=false;
   for (int i=1; i<8; i++)
     big_asteroids[i-1]=loadImage("bigasteroid"+i+".png");
   for (int i=1; i<10; i++)
@@ -39,7 +41,7 @@ void draw()
 {
   if(shooters.size()==0)
   {
-    S = new Shooter(width/2.0, height/2.0, spaceship);
+  Shooter S = new Shooter(width/2.0, height/2.0, spaceship);
   shooters.add(S);
   }
   background(0);
@@ -83,12 +85,14 @@ void draw()
   checkCollisions();
   for (int i=0; i<fires.size(); i++)
   { 
-
     if (fires.get(i).angle_unit==23)
       fires.remove(i);
-    if (fires.size()!=0)
+    if (fires.size()>0)
     {
+      if(fires.size()==1)
+       i=0;
       fires.get(i).move();
+      if(fires.get(i).angle_unit<24)
       fires.get(i).display(250, 250);
     }
   }
@@ -97,7 +101,7 @@ void draw()
 
 void checkCollisions()
 {
-  // ArrayList<Integer>indices= new ArrayList<Integer>(1);
+   ArrayList<Integer>indices= new ArrayList<Integer>(1);
   for (int i=0; i<shots.size(); i++)
     for (int j=0; j<asteroids.size(); j++)
       if (shots.get(i).checkCollision(j))
@@ -105,7 +109,10 @@ void checkCollisions()
         Fire f=new Fire(asteroids.get(j).position.x, asteroids.get(j).position.y, explosion);
         fires.add(f);
         asteroids.remove(j);
+        indices.add(i);
       }
+      for(int x:indices)
+        shots.remove(x);
     for (int j=0; j<asteroids.size(); j++)
       if (shooters.get(0).checkCollision(j))
       {
@@ -120,17 +127,73 @@ void keyPressed()
   if(shooters.size()!=0)
   {
   if(keyCode==UP)
+   // keys[0]=true;
     shooters.get(0).alterY(1);
   if(keyCode==DOWN)
+   // keys[1]=true;
     shooters.get(0).alterY(0);
   if (keyCode==LEFT)
+   // keys[2]=true;
     shooters.get(0).alterAngle(0);//fill in code to increase the angle
   if (keyCode==RIGHT)
-    shooters.get(0).alterAngle(1);//fill in code to decrease the tanks angle. Make sure to have a catch for 0 degree
+  //  keys[3]=true;
+   shooters.get(0).alterAngle(1);//fill in code to decrease the tanks angle. Make sure to have a catch for 0 degree
+  //if(keys[0]&&keys[2])
+  //  {
+  //    shooters.get(0).alterY(1);
+  //    shooters.get(0).alterAngle(0);
+  //    keys[0]=false;
+  //    keys[2]=false;
+  //  }
+  //else if(keys[0]&&keys[3])
+  //{
+  // shooters.get(0).alterY(1); 
+  // shooters.get(0).alterAngle(1);
+  // keys[0]=false;
+  // keys[3]=false;
+  //}
+  //else if(keys[1]&&keys[2])
+  //{
+  //  shooters.get(0).alterY(0);
+  //  shooters.get(0).alterAngle(0);
+  //  keys[1]=false;
+  //  keys[2]=false;
+  //}
+  //else if(keys[1]&&keys[3])
+  //{
+  //  shooters.get(0).alterY(0);
+  //  shooters.get(0).alterAngle(1);
+  //  keys[1]=false;
+  //  keys[3]=false;
+  //}
+  //else if(keys[0])
+  //{
+  //  shooters.get(0).alterY(1);
+  //  keys[0]=false;
+  //}
+  //else if(keys[1])
+  //{
+  //  shooters.get(0).alterY(0);
+  //  keys[1]=false;
+  //}
+  //else if(keys[2])
+  //{
+  //  shooters.get(0).alterAngle(0);
+  //  keys[2]=false;
+  //}
+  //else if(keys[3])
+  //{
+  //  shooters.get(0).alterAngle(1);
+  //  keys[3]=false;
+  //}
   }
 }
 void keyReleased()
 {
   if (key=='x')
-    shooters.get(0).shoot();
+    keys[4]=true;
+    //shooters.get(0).shoot();
+}
+void updateKeys()
+{
 }
