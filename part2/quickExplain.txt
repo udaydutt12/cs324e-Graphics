@@ -1,0 +1,2 @@
+In both my files I dispalyed information from the CSV file and the interactivity
+part is when the mouse hovers over the plotted data and displays more information about the data.
